@@ -3,38 +3,62 @@ import useGlobalReducer from "../hooks/useGlobalReducer"
 import { Await, Link } from "react-router-dom"
 import { ContactCard } from "../components/ContactCard"
 
+export const Contact = () => {
+  const { store, dispatch } = useGlobalReducer();
 
-export const Contact = () =>{
-    const {store, dispatch } = useGlobalReducer()
+  useEffect(() => {
+    fetchAllContacts();
+  }, []);
 
-    useEffect(() => {
-        fetchAllContacts();
-    }, [])
+  const fetchAllContacts = async () => {
+    try {
+      const response = await fetch(
+        "https://playground.4geeks.com/contact/agendas/dariusp/contacts"
+      );
+      const data = await response.json();
+      console.log("API Data:", data);  // Debug
+      dispatch({
+        type: "fetchedContacts",
+        payload: data.contacts || [],
+      });
+    } catch (error) {
+      console.error("Error fetching contacts:", error);
+    }
+  };
 
-    const fetchAllContacts = async () => {
-        const response = await fetch('https://playground.4geeks.com/contact/agendas/dariusp/contacts')
-        try {
-            if (!response.ok) {
-                throw new Error(response.status)
-            }
-            const data = await response.json()
-            console.log("not in reducer",data.contacts)
-            
-            dispatch({
-                type: 'fetchedContacts',
-                payload: data.contacts,
-            })
-        }
-        catch  (error){
-            console.error("Error getting agenda. Make sure the agenda was created.",error)
-            }
-        }
-    
 
-    return (
-        <>
-        <h1>Contact</h1>
-        </>
-    )
-}
+  
+  return (
+    <>
+    <div>
+    <Link to="/addcontact">
+    <button className="btn button-primary">Add a Contact</button>
+    </Link>
+    </div>
+    <div className="container">
+      {!store || !store.contacts ? (
+        <h1>Loading...</h1>
+      ) : store.contacts.length === 0 ? (
+        <p>No contacts found.</p>
+      ) : (
 
+      
+        store.contacts.map((contact) => (
+        
+          
+          <ul className="list-group-item" key={contact.id || Math.random()}>
+            <ContactCard
+              name={contact.name}
+              phone={contact.phone}
+              email={contact.email}
+              address={contact.address}
+              key={contact.id} 
+              contact={contact}
+            />
+          </ul>
+        ))
+      )}
+    </div>
+    </>
+  );
+};
