@@ -49,6 +49,7 @@ export const ContactCard = ({ contact }) => {
       console.error('Error updating contact:', error);
       alert('Failed to update contact');
     }
+    window.location.reload(false);
   };
 
   return (
@@ -120,9 +121,9 @@ export const ContactCard = ({ contact }) => {
       ) : (
         <div className="flex-grow-1">
           <h5>{contact.name}</h5>
-          <p className="mb-1"><i className="bi bi-geo-alt"></i> {contact.address}</p>
-          <p className="mb-1"><i className="bi bi-telephone"></i> {contact.phone}</p>
-          <p className="mb-3"><i className="bi bi-envelope"></i> {contact.email}</p>
+          <p className="mb-1"><i className="fa-solid fa-location-dot"></i> {contact.address}</p>
+          <p className="mb-1"><i className="fa-solid fa-phone"></i> {contact.phone}</p>
+          <p className="mb-3"><i className="fa-solid fa-envelope"></i> {contact.email}</p>
           <div>
             <button 
               onClick={() => setIsEditing(true)} 

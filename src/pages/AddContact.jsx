@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useGlobalReducer from '../hooks/useGlobalReducer';
+import { Contact } from "./Contact";
 
 export const ContactForm = () => {
     const { id } = useParams();
@@ -9,8 +10,8 @@ export const ContactForm = () => {
     const { store, dispatch } = useGlobalReducer();
     const [contact, setContact] = useState({
         name: '',
-        address: '',
         phone: '',
+        address: '',
         email: ''
     });
 
@@ -32,8 +33,8 @@ export const ContactForm = () => {
         
         try {
             const url = id 
-                ? `https://playground.4geeks.com/contact/agendas/dariusp/contact/${id}`
-                : 'https://playground.4geeks.com/contact/agendas/dariusp/contact';
+                ? `https://playground.4geeks.com/contact/agendas/dariusp/contacts/${id}`
+                : 'https://playground.4geeks.com/contact/agendas/dariusp/contacts';
 
             const method = id ? 'PUT' : 'POST';
 
@@ -59,6 +60,8 @@ export const ContactForm = () => {
             console.error('Error:', error);
             alert(`Failed to ${id ? 'update' : 'add'} contact`);
         }
+
+
     };
 
     return (
@@ -116,13 +119,12 @@ export const ContactForm = () => {
                             required
                         />
                     </div>
-                    {/* Include other fields (address, phone, email) */}
                     
-                    <button type="submit" className="btn btn-primary me-2">
-                        {id ? 'Update Contact' : 'Add Contact'}
+                    <button type="submit" className="btn btn-primary me-2" >
+                        {id ? 'Update Contact' : 'Save Contact'}
                     </button>
                     <Link to="/contact" className="btn btn-secondary">
-                        Back to contact
+                        Back to your contacts
                     </Link>
                 </form>
             </div>

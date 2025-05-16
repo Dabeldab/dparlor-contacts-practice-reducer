@@ -3,7 +3,7 @@ import useGlobalReducer from "../hooks/useGlobalReducer"
 import { Await, Link } from "react-router-dom"
 import { ContactCard } from "../components/ContactCard"
 
-export const Contact = () => {
+export const Contact = ({}) => {
   const { store, dispatch } = useGlobalReducer();
 
   useEffect(() => {
@@ -16,7 +16,6 @@ export const Contact = () => {
         "https://playground.4geeks.com/contact/agendas/dariusp/contacts"
       );
       const data = await response.json();
-      console.log("API Data:", data);  // Debug
       dispatch({
         type: "fetchedContacts",
         payload: data.contacts || [],
@@ -32,7 +31,7 @@ export const Contact = () => {
     <>
     <div>
     <Link to="/addcontact">
-    <button className="btn button-primary">Add a Contact</button>
+    <button className="btn btn-primary">Add a Contact</button>
     </Link>
     </div>
     <div className="container">
@@ -46,7 +45,7 @@ export const Contact = () => {
         store.contacts.map((contact) => (
         
           
-          <ul className="list-group-item" key={contact.id || Math.random()}>
+          <ul className="list-group-item" key={contact.id}>
             <ContactCard
               name={contact.name}
               phone={contact.phone}
