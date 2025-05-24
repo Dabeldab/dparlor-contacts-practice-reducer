@@ -28,9 +28,11 @@ export const ContactForm = () => {
         setContact(prev => ({ ...prev, [name]: value }));
     };
 
+
+    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
         try {
             const url = id 
                 ? `https://playground.4geeks.com/contact/agendas/dariusp/contacts/${id}`
@@ -45,7 +47,6 @@ export const ContactForm = () => {
             });
 
             if (!response.ok) throw new Error(id ? 'Update failed' : 'Add failed');
-
             const result = await response.json();
 
             dispatch({
@@ -60,8 +61,6 @@ export const ContactForm = () => {
             console.error('Error:', error);
             alert(`Failed to ${id ? 'update' : 'add'} contact`);
         }
-
-
     };
 
     return (
@@ -70,7 +69,6 @@ export const ContactForm = () => {
             <div className="col-8">
                 <h2>{id ? 'Edit Contact' : 'Add New Contact'}</h2>
                 <form onSubmit={handleSubmit}>
-                    {/* Form fields remain the same */}
                     <div className="mb-3">
                         <label htmlFor="name" className="form-label">Full Name</label>
                         <input

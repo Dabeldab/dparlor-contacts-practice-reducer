@@ -9,6 +9,27 @@ export const ContactCard = ({ contact }) => {
   const { name, phone, email, address } = contact || {};
   const [isSaving, setIsSaving] = useState(false);
 
+    const handleDelete = async (e) => {
+        
+        try {
+            const response = await fetch(`https://playground.4geeks.com/contact/agendas/dariusp/contacts/${contact.id}`,
+                {
+                    method: "DELETE"
+                }
+            )
+        if (!response.ok) throw new Error(id ? 'Delete failed': 'success')
+
+        dispatch({
+            type:  'deleteContact',
+            payload:  {id: contact.id}
+        })
+        alert("Contact deleted!")
+        navigate('/contact')
+    then((result) => console.log(result))
+    
+        } catch {((error) => console.error(error))}
+        
+    }
 
   useEffect(() => {
     if (contact) {
@@ -131,7 +152,7 @@ export const ContactCard = ({ contact }) => {
             >
               Edit
             </button>
-            <button className="btn btn-sm btn-outline-danger">
+            <button className="btn btn-sm btn-outline-danger" onClick={() => handleDelete()}>
               Delete
             </button>
           </div>

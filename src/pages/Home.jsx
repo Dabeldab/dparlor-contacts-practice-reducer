@@ -12,8 +12,8 @@ export const Home = () => {
 			<Link to='/contact'><h1>Open your Contacts</h1></Link>
 			<p>
 				<svg fill="#000000" height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" 
-				xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 490.468 490.468" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0">
-					</g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> 
+				xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 490.468 490.468" xmlSpace="preserve"><g id="SVGRepo_bgCarrier" strokeWidth="0">
+					</g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> 
 						<path d="M439.297,194.118c0-109.5-90.7-197.8-201-194c-97.2,3.4-176.9,78.2-186.2,175c-1.9,19.2-0.8,37.9,2.6,55.8l0,0 c0,0,0.3,2.1,1.3,6c3,13.4,
 						7.4,26.3,13.1,38.5c20.1,47.5,67.1,127.7,174.1,214.3c1.2,1,3,1,4.2,0 c107.1-86.6,154-166.8,174.1-214.3c5.6-12.2,10.1-25.1,13.1-38.5c0.9-3.9,1.3-6,
 						1.3-6l0,0 C438.097,219.118,439.297,206.718,439.297,194.118z M334.097,273.718c-2.6-4.9-6.9-8.9-13.6-10.7c-23.3-5.9-42.3-19.3-42.3-19.3 l-14.8,46.8l-2.8,
