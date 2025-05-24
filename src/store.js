@@ -20,7 +20,14 @@ export default function storeReducer(store, action = {}) {
               contact.id === action.payload.id ? CompositionEvent.payload : contact
             )
           }
-    default:
+          case 'deleteContact':
+            return {
+              ...store, 
+              contacts: store.contacts.filter(contact =>
+              contact.id !== action.payload.id)
+            }
+
+          default:
 return store
   }    
 }
